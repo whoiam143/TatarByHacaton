@@ -3,8 +3,6 @@ from aiogram import Bot, Dispatcher
 
 from app.handlers import router
 
-import app.keyboards as kb
-
 dp = Dispatcher()
 
 

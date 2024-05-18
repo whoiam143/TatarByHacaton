@@ -1,5 +1,4 @@
 import sqlite3 as sql
-from TatarByHacaton.app.handlers import global_language
 
 
 def create_bd():

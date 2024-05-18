@@ -1,6 +1,7 @@
 import sqlite3 as sql
 
 
+
 def create_bd():
     with sql.connect("data/dictionary.sqlite3") as con:
         cur = con.cursor()
@@ -17,12 +18,11 @@ def create_bd():
                     """)
 
 
-
         con.commit()
 
 
 def get_text(id, language):
-    with sql.connect("data/dictionary.db") as bd:
+    with sql.connect("data/dictionary.sqlite3") as bd:
         cur = bd.cursor()
 
         res = cur.execute("""SELECT rus, eng FROM slovar WHERE id == ?""", (id,))
@@ -33,7 +33,7 @@ def get_text(id, language):
 
 
 def add_result(id, rus, eng):
-    with sql.connect("data/dictionary.db") as bd:
+    with sql.connect("data/dictionary.sqlite3") as bd:
         cr = bd.cursor()
 
     cr.execute("""INSERT INTO slovar VALUES (?, ?, ?)""",

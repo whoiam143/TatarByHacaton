@@ -5,7 +5,7 @@ from app.handlers import router
 import app.keyboards as kb
 from aiogram.types import Message
 from translator import *
-from data.db import *
+from TatarByHacaton.data.db import *
 
 dp = Dispatcher()
 
@@ -20,8 +20,6 @@ async def main():
 
 
 if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-    except Exception:
-        print("not working")
+    asyncio.run(main())
+
 

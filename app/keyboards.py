@@ -14,11 +14,36 @@ def menu_keyboard(user_id):
                                   resize_keyboard=True, input_field_placeholder="Выбери опцию:")
     return menu_kb
 
+########### GAME #############
 def kvest1(user_id):
     kb = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="1 отве", callback_data="ru")],
                                                  [InlineKeyboardButton(text="EN🇺🇸", callback_data="en")]],
                                 resize_keyboard=True)
 
+########## TRAVEL GUIDE ##########
+
+def eat_veiw(user_id):
+    kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=str(get_text(4, get_user_lang(user_id))))],
+                                       [KeyboardButton(text=str(get_text(5, get_user_lang(user_id))))],
+                                       [KeyboardButton(text=str(get_text(6, get_user_lang(user_id))))]],
+                                  resize_keyboard=True, input_field_placeholder="Выбери опцию:")
+    return kb
+
+def eat(user_id):
+    kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="1. Тюбетей")],
+                                       [KeyboardButton(text="2. Гусь")],
+                                       [KeyboardButton(text="3. Азу")],
+                                       [KeyboardButton(text=str(get_text(8, get_user_lang(user_id))))]],
+                                  resize_keyboard=True, input_field_placeholder="Выбери опцию:")
+    return kb
+
+def fun(user_id):
+    kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="1. Skypark")],
+                                       [KeyboardButton(text="2. Форсаж")],
+                                       [KeyboardButton(text="3. LazerLand")],
+                                       [KeyboardButton(text=str(get_text(13, get_user_lang(user_id))))]],
+                                  resize_keyboard=True, input_field_placeholder="Выбери опцию:")
+    return kb
 
 def user_lang(user_id, lang):
     with sql.connect('data/dictionary.sqlite3') as db:

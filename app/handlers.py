@@ -24,9 +24,8 @@ Hi🖐️, I am a Tatarin, and I will help you know more about the Republic of T
 
 @router.callback_query(F.data == "ru")
 async def select_russian(callback: CallbackQuery):
-    global global_language
-    global_language = "ru"
-    await callback.message.answer("Вы выбрали русский язык🇷🇺", reply_markup=kb.menu_kb)
+    await callback.message.answer("Вы выбрали русский язык🇷🇺")
+    kb.user_lang(callback.from_user.id, 'ru')
     await callback.message.delete()
     #kb.menu_keyboard(global_language)
 
@@ -34,9 +33,9 @@ async def select_russian(callback: CallbackQuery):
 
 @router.callback_query(F.data == "en")
 async def select_russian(callback: CallbackQuery):
-    global global_language
-    global_language = "en"
     await callback.message.answer("You selected english language🇺🇸")
+    kb.user_lang(callback.from_user.id, 'en')
+    await callback.message.delete()
     #kb.menu_keyboard(global_language)
 
 

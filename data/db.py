@@ -2,7 +2,7 @@ import sqlite3 as sql
 
 
 def create_bd():
-    with sql.connect("data/dictionary.db") as con:
+    with sql.connect("data/dictionary.sqlite3") as con:
         cur = con.cursor()
 
         cur.execute(""" CREATE TABLE IF NOT EXISTS slovar(
@@ -11,10 +11,9 @@ def create_bd():
             eng TEXT);
             """)
 
-        cur.execute(""" CREATE TABLE IF NOT EXISTS slovar(
-            id INTEGER,
-            rus TEXT,
-            eng TEXT);
+        cur.execute(""" CREATE TABLE IF NOT EXISTS users(
+            user_id TEXT,
+            lang TEXT);
                     """)
 
 

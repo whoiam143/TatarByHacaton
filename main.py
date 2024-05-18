@@ -5,6 +5,7 @@ from app.handlers import router
 import app.keyboards as kb
 from aiogram.types import Message
 from translator import *
+from data.db import *
 
 dp = Dispatcher()
 
@@ -14,6 +15,7 @@ async def main():
         token = file.readline()
     bot = Bot(token)
     dp.include_router(router)
+    create_bd()
     await dp.start_polling(bot)
 
 

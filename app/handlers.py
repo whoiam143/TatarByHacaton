@@ -4,9 +4,10 @@ from aiogram.filters import CommandStart, Command
 
 from time import sleep
 
-from TatarByHacaton.data.db import *
+from data.db import *
 
-import TatarByHacaton.app.keyboards as kb
+import app.keyboards as kb
+
 
 router = Router()
 

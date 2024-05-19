@@ -1,7 +1,6 @@
 import sqlite3 as sql
 
 
-
 def create_bd():
     with sql.connect("data/dictionary.sqlite3") as con:
         cur = con.cursor()

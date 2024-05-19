@@ -11,7 +11,7 @@ dp = Dispatcher()
 
 
 async def main():
-    with open("token.txt", "r") as file:
+    with open("data/token.txt", "r") as file:
         token = file.readline()
     bot = Bot(token)
     dp.include_router(router)

@@ -3,12 +3,12 @@ import asyncio
 from aiogram import F, Router
 from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram.filters import CommandStart, Command
-from translator import *
+from TatarByHacaton.translator import *
 
 
-from data.db import *
+from TatarByHacaton.data.db import *
 
-import app.keyboards as kb
+import TatarByHacaton.app.keyboards as kb
 
 
 router = Router()
@@ -151,19 +151,19 @@ async def fun(message: Message):
     await message.answer(get_text(12, kb.get_user_lang(message.from_user.id)), reply_markup=kb.fun(message.from_user.id))
 
 
-@router.message(F.text == "1. Тюбетей")
+@router.message(F.text == "1. Tubetey")
 async def tubetey(message: Message):
     photo = FSInputFile("pictures/tubetey.jpg")
     await message.answer_photo(photo, get_text(9, kb.get_user_lang(message.from_user.id)), reply_markup=kb.eat(message.from_user.id))
 
 
-@router.message(F.text == "2. Гусь")
+@router.message(F.text == "2. Goose")
 async def tubetey(message: Message):
     photo = FSInputFile("pictures/gus.jpg")
     await message.answer_photo(photo, get_text(10, kb.get_user_lang(message.from_user.id)), reply_markup=kb.eat(message.from_user.id))
 
 
-@router.message(F.text == "3. Азу")
+@router.message(F.text == "3. Azu")
 async def tubetey(message: Message):
     photo = FSInputFile("pictures/azy.jpg")
     await message.answer_photo(photo, get_text(11, kb.get_user_lang(message.from_user.id)), reply_markup=kb.eat(message.from_user.id))
@@ -175,7 +175,7 @@ async def tubetey(message: Message):
     await message.answer_photo(photo, get_text(14, kb.get_user_lang(message.from_user.id)), reply_markup=kb.fun(message.from_user.id))
 
 
-@router.message(F.text == "2. Форсаж")
+@router.message(F.text == "2. Forsazh")
 async def tubetey(message: Message):
     photo = FSInputFile("pictures/forsaj.jpg")
     await message.answer_photo(photo, get_text(15, kb.get_user_lang(message.from_user.id)), reply_markup=kb.fun(message.from_user.id))

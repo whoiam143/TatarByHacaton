@@ -3,12 +3,12 @@ import asyncio
 from aiogram import F, Router
 from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram.filters import CommandStart, Command
-from TatarByHacaton.translator import *
+from translator import *
 
 
-from TatarByHacaton.data.db import *
+from data.db import *
 
-import TatarByHacaton.app.keyboards as kb
+import app.keyboards as kb
 
 
 router = Router()
@@ -197,7 +197,41 @@ async def check_business_message(message: Message):
 @router.message(Command('translate'))
 async def check_message(message: Message):
     if message.chat.id < 0:
-        if '/translate@aiogramadil_bot' in message.text: #НАДО ПОМЕНЯТЬ!!!
-            await message.answer(translate_to_tat(message.text[26:]))
+        if '/translate@TatarinForHacatonBot' in message.text:
+            if match(message.text):
+                await message.answer(translate_to_tat(message.text[31:]))
+            else:
+                await message.answer(translate_from_en_to_tat(message.text[31:]))
         else:
-            await message.answer(translate_to_tat(message.text[10:]))
+            if match(message.text):
+                await message.answer(translate_to_tat(message.text[10:]))
+            else:
+                await message.answer(translate_from_en_to_tat(message.text[10:]))
+
+
+@router.message(F.text.in_(["Переводчик🌎", "Translator🌎"]))
+async def translator(message: Message):
+    await message.answer(get_text(50, kb.get_user_lang(message.from_user.id)), reply_markup=kb.kb_translate(message.from_user.id))
+
+
+@router.message(F.text.in_(["Назад⏪️", "Back⏪️"]))
+async def translator(message: Message):
+    await message.answer(get_text(51, kb.get_user_lang(message.from_user.id)),reply_markup=kb.menu_keyboard(message.from_user.id))
+
+
+def match(text, alphabet=set('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')):
+    return not alphabet.isdisjoint(text.lower())
+
+
+@router.message(F.text.in_(["Добавление бота переводчика в чат➕", "Adding a bot for translating in a chat➕"]))
+async def translator(message: Message):
+    await message.answer(get_text(53, kb.get_user_lang(message.from_user.id)))
+    
+    
+    
+@router.message()
+async def translate_text(message: Message):
+    if match(message.text):
+        await message.answer(translate_to_tat(message.text))
+    else:
+        await message.answer(translate_from_en_to_tat(message.text))

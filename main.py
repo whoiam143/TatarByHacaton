@@ -5,13 +5,13 @@ from app.handlers import router
 import app.keyboards as kb
 from aiogram.types import Message
 from translator import *
-from TatarByHacaton.data.db import *
+from data.db import *
 
 dp = Dispatcher()
 
 
 async def main():
-    with open("data/token.txt", "r") as file:
+    with open("token.txt", "r") as file:
         token = file.readline()
     bot = Bot(token)
     dp.include_router(router)

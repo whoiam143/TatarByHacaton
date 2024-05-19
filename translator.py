@@ -13,10 +13,10 @@ def translate_to_tat(sentence):
     return result
 
 
-def translate_to_ru(sentence):
+def translate_from_en_to_tat(sentence):
     translator = EasyGoogleTranslate(
-        source_language='tt',
-        target_language='ru',
+        source_language='en',
+        target_language='tt',
         timeout=10
     )
 

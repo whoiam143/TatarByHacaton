@@ -1,16 +1,16 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
-from TatarByHacaton.data.db import *
+from data.db import *
 
 
 start_kb = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="RU🇷🇺", callback_data="ru")],
                                                  [InlineKeyboardButton(text="EN🇺🇸", callback_data="en")]],
                                 resize_keyboard=True)
 
-
 def menu_keyboard(user_id):
     menu_kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=str(get_text(1, get_user_lang(user_id))))],
-                                            [KeyboardButton(text=str(get_text(2, get_user_lang(user_id))))]],
+                                            [KeyboardButton(text=str(get_text(2, get_user_lang(user_id))))],
+                                            [KeyboardButton(text=str(get_text(49, get_user_lang(user_id))))]],
                                   resize_keyboard=True, one_time_keyboard=True,
                                   input_field_placeholder=str(get_text(28, get_user_lang(user_id))))
     return menu_kb
@@ -55,9 +55,9 @@ def eat_veiw(user_id):
 
 
 def eat(user_id):
-    kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="1. Тюбетей")],
-                                       [KeyboardButton(text="2. Гусь")],
-                                       [KeyboardButton(text="3. Азу")],
+    kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="1. Tubetey")],
+                                       [KeyboardButton(text="2. Goose")],
+                                       [KeyboardButton(text="3. Azu")],
                                        [KeyboardButton(text=str(get_text(8, get_user_lang(user_id))))]],
                                   resize_keyboard=True, input_field_placeholder=str(get_text(28, get_user_lang(user_id))))
     return kb
@@ -65,11 +65,20 @@ def eat(user_id):
 
 def fun(user_id):
     kb = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="1. Skypark")],
-                                       [KeyboardButton(text="2. Форсаж")],
+                                       [KeyboardButton(text="2. Forsazh")],
                                        [KeyboardButton(text="3. LazerLand")],
                                        [KeyboardButton(text=str(get_text(13, get_user_lang(user_id))))]],
                                   resize_keyboard=True, input_field_placeholder=str(get_text(28, get_user_lang(user_id))))
     return kb
+
+
+##########Translate###########
+def kb_translate(user_id):
+    translator = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=str(get_text(51, get_user_lang(user_id))))],
+                                               [KeyboardButton(text=str(get_text(52, get_user_lang(user_id))))]],
+                                     resize_keyboard=True)
+    
+    return translator
 
 
 def user_lang(user_id, lang):

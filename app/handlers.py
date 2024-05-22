@@ -3,12 +3,12 @@ import asyncio
 from aiogram import F, Router
 from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram.filters import CommandStart, Command
-from TatarByHacaton.translator import *
+from translator import *
 
 
-from TatarByHacaton.data.db import *
+from data.db import *
 
-import TatarByHacaton.app.keyboards as kb
+import app.keyboards as kb
 
 
 router = Router()
